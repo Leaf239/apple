@@ -143,6 +143,23 @@
             box-shadow: none;
         }
     </style>
+    <script>
+        function appendValue(value) {
+            document.calc.input.value += value;
+        }
+
+        function clearInput() {
+            document.calc.input.value = '';
+        }
+
+        function calculate() {
+            try {
+                document.calc.input.value = eval(document.calc.input.value);
+            } catch (e) {
+                document.calc.input.value = 'Error';
+            }
+        }
+    </script>
 </head>
 <body>
     <form name="calc">
@@ -155,25 +172,25 @@
             </tr>
             <tr>
                 <td>
-                    <input type="button" name="one" value="  1  " onclick="calc.input.value += '1'">
-                    <input type="button" name="two" value="  2  " onclick="calc.input.value += '2'">
-                    <input type="button" name="three" value="  3  " onclick="calc.input.value += '3'">
-                    <input type="button" class="operator" name="plus" value="  +  " onclick="calc.input.value += ' + '">
+                    <input type="button" name="one" value="  1  " onclick="appendValue('1')">
+                    <input type="button" name="two" value="  2  " onclick="appendValue('2')">
+                    <input type="button" name="three" value="  3  " onclick="appendValue('3')">
+                    <input type="button" class="operator" name="plus" value="  +  " onclick="appendValue(' + ')">
                     <br>
-                    <input type="button" name="four" value="  4  " onclick="calc.input.value += '4'">
-                    <input type="button" name="five" value="  5  " onclick="calc.input.value += '5'">
-                    <input type="button" name="six" value="  6  " onclick="calc.input.value += '6'">
-                    <input type="button" class="operator" name="minus" value="  -  " onclick="calc.input.value += ' - '">
+                    <input type="button" name="four" value="  4  " onclick="appendValue('4')">
+                    <input type="button" name="five" value="  5  " onclick="appendValue('5')">
+                    <input type="button" name="six" value="  6  " onclick="appendValue('6')">
+                    <input type="button" class="operator" name="minus" value="  -  " onclick="appendValue(' - ')">
                     <br>
-                    <input type="button" name="seven" value="  7  " onclick="calc.input.value += '7'">
-                    <input type="button" name="eight" value="  8  " onclick="calc.input.value += '8'">
-                    <input type="button" name="nine" value="  9  " onclick="calc.input.value += '9'">
-                    <input type="button" class="operator" name="times" value="  x  " onclick="calc.input.value += ' * '">
+                    <input type="button" name="seven" value="  7  " onclick="appendValue('7')">
+                    <input type="button" name="eight" value="  8  " onclick="appendValue('8')">
+                    <input type="button" name="nine" value="  9  " onclick="appendValue('9')">
+                    <input type="button" class="operator" name="times" value="  x  " onclick="appendValue(' * ')">
                     <br>
-                    <input type="button" id="clear" name="clear" value="  c  " onclick="calc.input.value = ''">
-                    <input type="button" name="zero" value="  0  " onclick="calc.input.value += '0'">
-                    <input type="button" name="doit" value="  =  " onclick="calc.input.value = eval(calc.input.value)">
-                    <input type="button" class="operator" name="div" value="  /  " onclick="calc.input.value += ' / '">
+                    <input type="button" id="clear" name="clear" value="  c  " onclick="clearInput()">
+                    <input type="button" name="zero" value="  0  " onclick="appendValue('0')">
+                    <input type="button" name="doit" value="  =  " onclick="calculate()">
+                    <input type="button" class="operator" name="div" value="  /  " onclick="appendValue(' / ')">
                     <br>
                 </td>
             </tr>
